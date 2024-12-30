@@ -1,8 +1,2 @@
-import { Header } from "../pieces/Header";
-export function Index() {
-  return (
-    <>
-      <Header/>
-    </>
-  );
-}
+export * from './home';
+export * from './login'

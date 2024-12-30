@@ -1,5 +1,5 @@
-import { Index } from "@/components/pages";
-import './globals.css'
+import { Home } from "@/components/pages";
+import '@/app/globals.css'
 export default function App() {
-  return <Index />;
+  return <Home />;
 }
