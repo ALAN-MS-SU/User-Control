@@ -4,8 +4,9 @@
 @tailwind utilities;
 
 :root {
-  --primary: #fff;
-  --secound: #000;
+  --primary: #ececec;
+  --secound: #050505;
+  --secound-hover: #2c2b2b;
 }
 
 * {
@@ -14,6 +15,9 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  border: none;
   font-size: 100%;
+  
+}
+input{
+  outline: none;
 }

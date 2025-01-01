@@ -1,4 +1,4 @@
-import { Header } from "../pieces/Header";
+import { Header } from "../pieces";
 export function Home() {
   return (
     <>
