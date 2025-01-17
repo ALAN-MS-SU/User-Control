@@ -1,8 +1,11 @@
 import { Header } from "../pieces";
-export function Home() {
-  return (
+export async function Home() {
+  // const session = await getServerSession(authOptions);
+  // const user:Users.User = session.user;
+  return(
     <>
-      <Header/>
+      <Header />
+      
     </>
   );
 }

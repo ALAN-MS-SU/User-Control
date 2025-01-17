@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-
-
-
+import SessionProvider from "../components/pieces/providers/sessionProvider";
 
 export const metadata: Metadata = {
   title: "User Control",
@@ -19,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
