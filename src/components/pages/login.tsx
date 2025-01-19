@@ -1,9 +1,10 @@
 "use client";
 import { signIn } from "next-auth/react";
-import { Form_Item } from "../pieces/Form_item";
+import { Form_Item } from "../pieces";
 import { SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Button } from "../pieces";
 export function Login() {
   const router = useRouter();
   return (
@@ -30,15 +31,10 @@ export function Login() {
         <h1 className=" text-center">Entrar</h1>
         <Form_Item Input="email" Label="Email" Name="email" />
         <Form_Item Input="password" Label="Senha" Name="password" />
-        <button
-          type="submit"
-          className=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors border-[--secound]  p-4 font-semibold w-[50%] rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
-        >
-          Entrar
-        </button>
+        <Button Text="Entrar" width="50%" />
         <div>
           <Link className=" text-blue-700" href={"new"}>
-            New account
+            Nova Conta
           </Link>
         </div>
       </form>

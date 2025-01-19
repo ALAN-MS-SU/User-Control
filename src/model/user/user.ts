@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { dbPool } from "../../db/config";
-enum Position {
-  Admin,
-  User,
-}
 
 export namespace Users {
+  export enum Position {
+    Admin,
+    User,
+  }
   export class User {
     public readonly ID: number;
     public readonly Name: string;
