@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { dbPool } from "../../db/config";
-
+import bcryptjs from "bcryptjs";
 export namespace Users {
   export enum Position {
     Admin,
@@ -34,20 +34,21 @@ export namespace Users {
   }
   export async function FindUser({
     email,
-    password,
+    password_enter,
   }: {
     email: string;
-    password: string;
+    password_enter: string;
   }): Promise<User | null> {
     try {
       const connection = await dbPool.connect();
-      const data = await connection.query(
-        "select * from Password_User($1,$2)",
-        [email, password]
-      );
+      const data = await connection.query("select * from Password_User($1)", [
+        email,
+      ]);
       connection.release();
-      const { id, name, position } = data.rows[0];
-      return new User(id, name, position, email);
+      const { id, name, position, password } = data.rows[0];
+      if (bcryptjs.compare(password_enter, password))
+        return new User(id, name, position, email);
+      return null
     } catch (err) {
       console.log(err);
       return null;

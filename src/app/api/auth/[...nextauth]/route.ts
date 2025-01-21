@@ -13,7 +13,7 @@ const authOptions = {
       authorize: async (credentials) => {
         const user = await Users.FindUser({
           email: credentials.email,
-          password: credentials.password,
+          password_enter: credentials.password,
         });
         if (user) {
           return Promise.resolve({
@@ -30,18 +30,28 @@ const authOptions = {
 
   pages: {
     signIn: process.env.NEXTAUTH_URL,
+    signOut: `${process.env.NEXTAUTH_URL}/login/login`,
   },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token = user;
+        token.user = user;
+        token.accessTokenExpires = Date.now() + 3600000;
       }
-
+      if (Date.now() > token.accessTokenExpires) {
+        return {
+          ...token,
+          accessTokenExpires: 0,
+        };
+      }
       return token;
     },
     async session({ session, token }) {
       if (token) {
-        session.user = token;
+        session.user = token.user;
+        if (token.accessToken) {
+          session.accessToken = token.accessToken;
+        }
       }
       return session;
     },
