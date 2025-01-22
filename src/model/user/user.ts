@@ -12,7 +12,7 @@ export namespace Users {
     public readonly Name: string;
     public readonly Position: Position;
     public readonly Email?: string;
-    private readonly Password?: string;
+    public readonly Password?: string;
     constructor(
       id: number,
       name: string,
@@ -29,10 +29,7 @@ export namespace Users {
     static async FindUser({
       Email,
       Password,
-    }: {
-      Email: string;
-      Password: string;
-    }): Promise<User | null> {
+    }: Omit<User, "ID" | "Position" | "Name">): Promise<User | null> {
       try {
         if (isBlanck(Email, Password)) throw new Error("String is blanck");
         const connection = await dbPool.connect();
@@ -54,11 +51,7 @@ export namespace Users {
       Name,
       Email,
       Password,
-    }: {
-      Name: string;
-      Email: string;
-      Password: string;
-    }): Promise<void> {
+    }: Omit<User, "ID" | "Position">): Promise<void> {
       try {
         if (isBlanck(Name, Email, Password))
           throw new Error("String is blanck");
@@ -78,6 +71,20 @@ export namespace Users {
         console.log(err);
         return;
       }
+    }
+    static async ListUsers({
+      ID,
+    }: Omit<User, "Name" | "Position">): Promise<User[]> {
+      const connection = await dbPool.connect();
+      const data = await connection.query("select * from Read_Users($1)", [
+        `ID != ${ID}`,
+      ]);
+      connection.release();
+      const Users: User[] = [];
+      data.rows.map((row) => {
+        Users.push(new User(row.id, row.name, row.position, row.email));
+      });
+      return Users;
     }
   }
 }

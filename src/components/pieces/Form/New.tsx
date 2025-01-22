@@ -5,8 +5,9 @@ import { Form_Item } from "./Form_item";
 import { SyntheticEvent } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 export function New() {
-  const router = useRouter();
+  const router:AppRouterInstance = useRouter();
   return (
     <div className=" h-[100dvh] flex flex-col items-center justify-center">
       <form
