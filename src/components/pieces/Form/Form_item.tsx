@@ -16,6 +16,7 @@ export function Form_Item({
         {Label}
       </label>
       <input
+        required
         className=" relative right-[45px] border-[var(--secound)] border-b bg-transparent"
         type={Input}
         name={Name}

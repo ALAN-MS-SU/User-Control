@@ -18,7 +18,7 @@ export function Header({ user }: { user: Users.User }) {
           width="100%"
           click={async (): Promise<void> => {
             await signOut({ redirect: false });
-            Router.replace("/login/login");
+            Router.replace("/login/singIn");
             return;
           }}
         />

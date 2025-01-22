@@ -1,5 +1,5 @@
-import { Login } from '../../../components/pages';
+import { Login_Forms } from '../../../components/pages';
 import '../../globals.css'
 export default function App() {
-  return <Login />;
+  return <Login_Forms />;
 }
