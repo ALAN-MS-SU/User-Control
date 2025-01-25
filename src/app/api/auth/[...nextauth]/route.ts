@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { Users } from "../../../../model";
+import { UserFuncs } from "../../../../model";
 const authOptions = {
   providers: [
     Credentials({
@@ -11,7 +11,7 @@ const authOptions = {
       },
 
       authorize: async (credentials) => {
-        const user = await Users.User.FindUser({
+        const user = await UserFuncs.FindUser({
           Email: credentials.email,
           Password: credentials.password
           

@@ -13,10 +13,10 @@ export function New() {
       <form
         onSubmit={async (e: SyntheticEvent): Promise<void> => {
           e.preventDefault();
-          const Formdata = new FormData(e.currentTarget as HTMLFormElement);
+          const body = new FormData(e.currentTarget as HTMLFormElement);
           await fetch(`${process.env.NEXT_PUBLIC_URL}/api/newUser`, {
             method: "POST",
-            body: Formdata,
+            body,
           })
             .then(async (data) => {
               if (!data.ok) {
@@ -24,8 +24,8 @@ export function New() {
               }
               await signIn("credentials", {
                 redirect: false,
-                email: Formdata.get("email") as string,
-                password: Formdata.get("password") as string,
+                email: body.get("email") as string,
+                password: body.get("password") as string,
               }).then((data) => {
                 if (!data.ok) {
                   return console.log(data);
@@ -43,7 +43,7 @@ export function New() {
         <Form_Item Label="Nome" Input="Text" Name="name" />
         <Form_Item Label="Email" Input="Email" Name="email" />
         <Form_Item Label="Senha" Input="Password" Name="password" />
-        <Button Text="Criar" width="50%" />
+        <Button Text="Criar" Width="50%" Type="submit" />
         <Link className="text-blue-700 underline" href={"singIn"}>
           Já tenho uma conta
         </Link>

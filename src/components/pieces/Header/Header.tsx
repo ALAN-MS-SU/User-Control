@@ -15,7 +15,8 @@ export function Header({ user }: { user: Users.User }) {
         <p className="text-[100%]">{user.Name}</p>
         <Button
           Text="Sair"
-          width="100%"
+          Width="100%"
+          Type="button"
           click={async (): Promise<void> => {
             await signOut({ redirect: false });
             Router.replace("/login/singIn");
