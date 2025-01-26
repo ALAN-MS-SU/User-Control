@@ -19,12 +19,13 @@ export function PositionForm({ ID, Name, Position }: User) {
           .then((data) => {
             if (!data.ok) {
               console.log(data);
-              throw new Error("fetch on PositionForm");
+              throw new Error("Fetch err on PositionForm");
             }
-            router.push("/")
+            router.push("/");
           })
           .catch((err) => {
             console.log(err);
+            router.replace("/login/signIn")
           });
       }}
       className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 w-[450px] rounded-2xl"
@@ -41,7 +42,7 @@ export function PositionForm({ ID, Name, Position }: User) {
         Items={["USER", "ADMIN"]}
         Name="Position"
       />
-      <Button Text="Mudar" Width="50%" Type="submit" />
+      <Button Text="Alterar" Width="50%" Type="submit" />
     </form>
   );
 }

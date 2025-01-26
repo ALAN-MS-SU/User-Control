@@ -1,6 +1,6 @@
 "use client";
-import { Users } from "../../../model";
-import { Button } from "../";
+import { Position } from "../../../model";
+import { Button } from "../Form/Button";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 export function ListLine({
@@ -12,13 +12,13 @@ export function ListLine({
 }: {
   Name: string;
   Email: string;
-  Position: Users.Position;
+  Position: Position;
   ID?: number;
   Edit?: boolean;
 }) {
   const router: AppRouterInstance = useRouter();
   return (
-    <tr>
+    <tr className=" h-[110px]">
       <td className=" p-[20px] border-[2px] border-solid border-[var(--secound)]">
         {Name}
       </td>

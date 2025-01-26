@@ -44,7 +44,7 @@ export function New() {
         <Form_Item Label="Email" Input="Email" Name="email" />
         <Form_Item Label="Senha" Input="Password" Name="password" />
         <Button Text="Criar" Width="50%" Type="submit" />
-        <Link className="text-blue-700 underline" href={"singIn"}>
+        <Link className="text-blue-700 underline" href={"signIn"}>
           Já tenho uma conta
         </Link>
       </form>

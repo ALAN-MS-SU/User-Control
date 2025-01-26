@@ -8,3 +8,4 @@ export * from "./List/ListUser";
 export * from "./List/ListAdmin";
 export * from "./List/ListLine";
 export * from "./Form/PositionForm"
+export * from "./Form/ConfigForm"

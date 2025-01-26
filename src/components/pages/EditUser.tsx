@@ -3,7 +3,14 @@ import { User } from "../../model";
 import { PositionForm } from "../pieces";
 export async function EditUser({ ID }: { ID: string }) {
   const user: User = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/EditPosition/${ID}`
+    `${process.env.NEXT_PUBLIC_URL}/api/EditPosition/${ID}`,
+    {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
   ).then(async (data) => {
     if (!data.ok) {
       console.log(data);

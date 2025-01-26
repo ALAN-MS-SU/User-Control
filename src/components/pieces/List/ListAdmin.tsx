@@ -1,8 +1,8 @@
 "use server";
-import { Users } from "../../../model";
+import { User } from "../../../model";
 import { ListLine } from "./ListLine";
-export async function ListAdmin({ user }: { user: Users.User }) {
-  const Lines: Users.User[] =
+export async function ListAdmin({ user }: { user: User }) {
+  const Lines: User[] =
     (await fetch(`${process.env.NEXT_PUBLIC_URL}/api/ListUsers/${user.ID}`, {
       method: "GET",
     })
@@ -11,7 +11,7 @@ export async function ListAdmin({ user }: { user: Users.User }) {
           return console.log(response);
         }
 
-        return (await response.json()) as Users.User[];
+        return (await response.json()) as User[];
       })
       .catch((err) => {
         console.log(err);
@@ -19,7 +19,7 @@ export async function ListAdmin({ user }: { user: Users.User }) {
       })) || [];
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col shadow-2xl mt-[100px] p-10 gap-10 rounded-2xl w-[80%]">
+      <div className="flex flex-col shadow-2xl mt-[50px] p-10 gap-10 rounded-2xl w-[80%]">
         <h1 className=" text-center text-[200%] font-semibold">
           Lista de usuários cadastrados
         </h1>

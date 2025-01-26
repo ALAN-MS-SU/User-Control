@@ -1,7 +1,7 @@
 import { isBlanck, User, Position } from "..";
 import { dbPool } from "../../db/config";
 import bcryptjs from "bcryptjs";
-export class UserFuncs {
+export abstract class UserFuncs {
   static async FindUser({
     Email,
     Password,
@@ -95,5 +95,27 @@ export class UserFuncs {
       console.log(err);
       throw new Error("Update err in UserFuncs.EditPosition");
     }
+  }
+  static async EditUser({
+    ID,
+    Name,
+    Password,
+    Email,
+  }: Omit<User, "Position">): Promise<void> {
+    if (isBlanck(ID.toString(), Name, Password, Email))
+      throw new Error("string is blanck on EditUser");
+    const connection = await dbPool.connect();
+    const hash = bcryptjs.hash(
+      Password,
+      Number.parseInt(process.env.hash_number)
+    );
+    await connection.query("call Users('update',$1,$2,$3,$4)", [
+      ID,
+      Name,
+      Email,
+      hash,
+    ]);
+    connection.release();
+    return;
   }
 }

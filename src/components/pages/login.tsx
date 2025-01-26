@@ -1,9 +1,7 @@
-"use client";
-import { useParams } from "next/navigation";
+"use server"
 import { Login, New } from "../pieces";
-export function Login_Forms() {
-  const { form }: { form: string } = useParams();
-  if (form == "singIn") return <Login />;
+export async function Login_Forms({form}:{form:string}) {
+  if (form == "signIn") return <Login />;
   if (form == "new") return <New />;
   return <></>
 }

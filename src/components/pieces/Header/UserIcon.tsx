@@ -1,17 +1,15 @@
 "use client";
+import { FaUser } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { FaUser } from "react-icons/fa";
-
 export function UserIcon({ children }: { children: React.ReactNode }) {
-  const Router: AppRouterInstance = useRouter();
-
+  const router: AppRouterInstance = useRouter();
   return (
-    <div
-      onClick={() => Router.push("/login/login")}
-      className=" flex flex-col items-center transition-colors ease-in-out"
-    >
-      <FaUser className=" border-solid text-[400%] border-[2px] rounded-full border-[var(--secound)]" />
+    <div className=" flex flex-col items-center transition-colors ease-in-out">
+      <FaUser
+        onClick={() => router.push(`/ConfigUser`)}
+        className=" text-[var(--secound)] cursor-pointer border-solid text-[400%] border-[2px] rounded-full border-[var(--secound)] hover:border-[var(--secound-hover)] hover:text-[var(--secound-hover)]"
+      />
       {children}
     </div>
   );

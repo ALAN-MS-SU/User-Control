@@ -30,8 +30,8 @@ const authOptions = {
   ],
 
   pages: {
-    signIn: process.env.NEXTAUTH_URL,
-    signOut: process.env.NEXTAUTH_URL,
+    // signIn: process.env.NEXTAUTH_URL,
+    // signOut: process.env.NEXTAUTH_URL,
   },
   callbacks: {
     async jwt({ token, user }) {

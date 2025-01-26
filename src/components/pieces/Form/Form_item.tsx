@@ -16,7 +16,7 @@ export function Form_Item({
   return (
     <div className="grid grid-cols-2">
       <label
-        className=" text-center relative left-[55px] w-[55px]"
+        className=" text-center relative left-[20px] w-[100px]"
         htmlFor={Name}
       >
         {Label}
@@ -24,6 +24,7 @@ export function Form_Item({
       {Input && (
         <input
           required
+          defaultValue={DefaultValue||""}
           className=" relative right-[45px] border-[var(--secound)] border-b bg-transparent"
           type={Input}
           name={Name}

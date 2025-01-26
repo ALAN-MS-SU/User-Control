@@ -1,12 +1,12 @@
 "use client";
 import { signOut } from "next-auth/react";
 import { Button, UserIcon } from "../../pieces";
-import { Users } from "../../../model";
+import { User } from "../../../model";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export function Header({ user }: { user: Users.User }) {
-  const Router: AppRouterInstance = useRouter();
+export function Header({ user }: { user: User }) {
+  const router: AppRouterInstance = useRouter();
 
   return (
     <header className=" shadow-lg p-10 flex flex-row justify-center gap-[75%] items-center w-[100%]">
@@ -18,8 +18,8 @@ export function Header({ user }: { user: Users.User }) {
           Width="100%"
           Type="button"
           click={async (): Promise<void> => {
-            await signOut({ redirect: false });
-            Router.replace("/login/singIn");
+            await signOut({ redirect: false, callbackUrl: "/login/signIn" });
+            router.replace("/login/signIn");
             return;
           }}
         />
