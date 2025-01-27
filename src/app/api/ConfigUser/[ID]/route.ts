@@ -12,3 +12,8 @@ export async function PUT(req: NextRequest) {
   });
   return new NextResponse();
 }
+export async function DELETE(req: NextRequest) {
+  const ID: number = Number.parseInt(req.nextUrl.pathname.split("/")[3]);
+  await UserFuncs.DeleteUSer({ ID });
+  return new NextResponse();
+}

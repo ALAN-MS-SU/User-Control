@@ -1,11 +1,11 @@
-import { isBlanck, User, Position } from "..";
+import { isBlanck, User, UserRequest } from "..";
 import { dbPool } from "../../db/config";
 import bcryptjs from "bcryptjs";
 export abstract class UserFuncs {
   static async FindUser({
     Email,
     Password,
-  }: Omit<User, "ID" | "Position" | "Name">): Promise<User | null> {
+  }: Omit<User, "ID" | "Name">): Promise<User | null> {
     try {
       if (isBlanck(Email, Password)) throw new Error("String is blanck");
       const connection = await dbPool.connect();
@@ -27,7 +27,7 @@ export abstract class UserFuncs {
     Name,
     Email,
     Password,
-  }: Omit<User, "ID" | "Position">): Promise<void> {
+  }: Omit<User, "ID">): Promise<void> {
     try {
       if (isBlanck(Name, Email, Password)) throw new Error("String is blanck");
       const Hash = bcryptjs.hash(
@@ -49,7 +49,7 @@ export abstract class UserFuncs {
   }
   static async ListUsers({
     ID,
-  }: Omit<User, "Name" | "Position">): Promise<User[]> {
+  }: Omit<User, "Name">): Promise<User[]> {
     const connection = await dbPool.connect();
     const data = await connection.query("select * from Read_Users($1)", [
       `ID != ${ID}`,
@@ -63,15 +63,11 @@ export abstract class UserFuncs {
   }
   static async EditPosition({
     ID,
-    GET,
+    Request,
     Position,
-  }: {
-    ID: number;
-    Position?: Position;
-    GET?: boolean;
-  }): Promise<User | null> {
+  }: Pick<UserRequest, "Request" | "Position" | "ID">): Promise<User | null> {
     const connection = await dbPool.connect();
-    if (GET) {
+    if (Request == "GET") {
       try {
         const data = await connection.query("select * from Read_Users($1)", [
           `ID = ${ID}`,
@@ -96,12 +92,7 @@ export abstract class UserFuncs {
       throw new Error("Update err in UserFuncs.EditPosition");
     }
   }
-  static async EditUser({
-    ID,
-    Name,
-    Password,
-    Email,
-  }: Omit<User, "Position">): Promise<void> {
+  static async EditUser({ ID, Name, Password, Email }: User): Promise<void> {
     if (isBlanck(ID.toString(), Name, Password, Email))
       throw new Error("string is blanck on EditUser");
     const connection = await dbPool.connect();
@@ -115,6 +106,14 @@ export abstract class UserFuncs {
       Email,
       hash,
     ]);
+    connection.release();
+    return;
+  }
+  static async DeleteUSer({ ID }: Pick<User, "ID">): Promise<void> {
+    if (isBlanck(ID.toString()))
+      throw new Error("string is blanck in DeleteUser");
+    const connection = await dbPool.connect();
+    await connection.query("call Users('delete',$1)", [ID]);
     connection.release();
     return;
   }

@@ -9,7 +9,7 @@ export function Header({ user }: { user: User }) {
   const router: AppRouterInstance = useRouter();
 
   return (
-    <header className=" shadow-lg p-10 flex flex-row justify-center gap-[75%] items-center w-[100%]">
+    <header className=" sticky top-0 bg-[var(--primary-light)] opacity-100 shadow-lg p-10 flex flex-row justify-center gap-[75%] items-center w-[100%]">
       <h1 className=" text-[150%]">{`Bem vindo  ${user.Name}`}</h1>
       <UserIcon>
         <p className="text-[100%]">{user.Name}</p>
@@ -18,7 +18,7 @@ export function Header({ user }: { user: User }) {
           Width="100%"
           Type="button"
           click={async (): Promise<void> => {
-            await signOut({ redirect: false, callbackUrl: "/login/signIn" });
+            await signOut({ redirect: false });
             router.replace("/login/signIn");
             return;
           }}

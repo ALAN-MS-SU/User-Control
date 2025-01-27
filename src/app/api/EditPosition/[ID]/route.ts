@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { UserFuncs, User, Position } from "../../../../model";
 export async function GET(req: NextRequest) {
   const ID: number = Number.parseInt(req.nextUrl.pathname.split("/")[3]);
-  const user: User = await UserFuncs.EditPosition({ ID, GET: true });
+  const user: User = await UserFuncs.EditPosition({ ID, Request: req.method });
   return NextResponse.json(user);
 }
 export async function PUT(req: NextRequest) {

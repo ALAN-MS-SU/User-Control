@@ -5,6 +5,7 @@ import { SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { User } from "../../../model";
+import { signOut } from "next-auth/react";
 export function ConfigForm({
   Name,
   Email,
@@ -41,8 +42,33 @@ export function ConfigForm({
           Input="Email"
           Name="email"
         />
-        <Form_Item Label="Nova Senha" Input="Password" Name="password" />
-        <Button Text="Alterar" Width="50%" Type="submit" />
+        <Form_Item Label="Senha" Input="Password" Name="password" />
+        <div className=" w-full flex justify-between">
+          <Button Text="Alterar" Width="40%" Type="submit" />
+          <Button
+            Text="Deletar"
+            Width="40%"
+            Type="button"
+            click={async () => {
+              await fetch(
+                `${process.env.NEXT_PUBLIC_URL}/api/ConfigUser/${ID}`,
+                {
+                  method: "DELETE",
+                }
+              )
+                .then(async (data) => {
+                  if (!data.ok) throw new Error("fetch err on ConfigForm");
+                  await signOut({ redirect: false });
+                  router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
+                });
+              return;
+            }}
+          />
+        </div>
       </form>
     </div>
   );
