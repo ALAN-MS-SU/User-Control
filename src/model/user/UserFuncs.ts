@@ -15,7 +15,7 @@ export abstract class UserFuncs {
       connection.release();
       const { id, name, position } = data.rows[0];
       const Hash = data.rows[0].password;
-      if (bcryptjs.compare(Password, Hash))
+      if (await bcryptjs.compare(Password, Hash))
         return new User(id, name, position, Email);
       return null;
     } catch (err) {
@@ -30,7 +30,7 @@ export abstract class UserFuncs {
   }: Omit<User, "ID">): Promise<void> {
     try {
       if (isBlanck(Name, Email, Password)) throw new Error("String is blanck");
-      const Hash = bcryptjs.hash(
+      const Hash = await bcryptjs.hash(
         Password,
         Number.parseInt(process.env.hash_number)
       );
@@ -47,9 +47,7 @@ export abstract class UserFuncs {
       return;
     }
   }
-  static async ListUsers({
-    ID,
-  }: Omit<User, "Name">): Promise<User[]> {
+  static async ListUsers({ ID }: Omit<User, "Name">): Promise<User[]> {
     const connection = await dbPool.connect();
     const data = await connection.query("select * from Read_Users($1)", [
       `ID != ${ID}`,
@@ -96,7 +94,7 @@ export abstract class UserFuncs {
     if (isBlanck(ID.toString(), Name, Password, Email))
       throw new Error("string is blanck on EditUser");
     const connection = await dbPool.connect();
-    const hash = bcryptjs.hash(
+    const hash = await bcryptjs.hash(
       Password,
       Number.parseInt(process.env.hash_number)
     );

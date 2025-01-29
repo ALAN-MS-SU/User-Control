@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { UserFuncs } from "../../../../model";
 
+export async function POST(req: NextRequest) {
+  const body = await req.formData();
+  if (
+    (await UserFuncs.FindUser({
+      Email: body.get("email") as string,
+      Password: body.get("password") as string,
+    })) == null
+  )
+    throw new Error("Password invalid");
+  return new NextResponse();
+}
+
 export async function PUT(req: NextRequest) {
   const body = await req.formData();
   const ID: number = Number.parseInt(req.nextUrl.pathname.split("/")[3]);
