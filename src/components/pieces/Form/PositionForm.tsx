@@ -45,7 +45,32 @@ export function PositionForm({ ID, Name, Position }: User) {
           Items={["USER", "ADMIN"]}
           Name="Position"
         />
-        <Button Text="Alterar" Width="50%" Type="submit" />
+        <div className=" w-full flex justify-between">
+          <Button Text="Alterar" Width="40%" Type="submit" />
+          <Button
+            Text="Deletar"
+            Width="40%"
+            Type="button"
+            click={async (): Promise<void> => {
+              await fetch(
+                `${process.env.NEXT_PUBLIC_URL}/api/ConfigUser/${ID}`,
+                {
+                  method: "DELETE",
+                }
+              )
+                .then(async (data) => {
+                  if (!data.ok) {
+                    router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
+                  }
+                  router.replace(process.env.NEXT_PUBLIC_URL);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+              return;
+            }}
+          />
+        </div>
       </form>
     </div>
   );

@@ -23,7 +23,7 @@ export function ConfigForm({
             method: "PUT",
             body,
           })
-            .then(async(data) => {
+            .then(async (data) => {
               if (!data.ok) throw new Error("fetch err on ConfigForm");
               await signIn("credentials", {
                 redirect: false,
@@ -67,7 +67,11 @@ export function ConfigForm({
                 }
               )
                 .then(async (data) => {
-                  if (!data.ok) throw new Error("fetch err on ConfigForm");
+                  if (!data.ok) {
+                    router.replace(
+                      `${process.env.NEXT_PUBLIC_URL}/login/signIn`
+                    );
+                  }
                   await signOut({ redirect: false });
                   router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
                 })
