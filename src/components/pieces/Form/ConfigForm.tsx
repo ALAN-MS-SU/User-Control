@@ -54,10 +54,14 @@ export function ConfigForm({
           Name="password"
         />
         <div className=" w-full flex justify-between">
-          <Button Text="Alterar" Width="40%" Type="submit" />
+          <Button
+            Text="Alterar"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-3 xl:p-4 w-[40%] text-[85%] lg:text-[90%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+            Type="submit"
+          />
           <Button
             Text="Deletar"
-            Width="40%"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[40%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
             Type="button"
             click={async () => {
               await fetch(

@@ -20,7 +20,11 @@ export function Confirm({
       >
         <h1 className=" text-center">Digite sua senha atual</h1>
         <Form_Item Input="Password" Label="Senha" Name="password" />
-        <Button Text="Verificar" Width="50%" Type="submit" />
+        <Button
+          Text="Verificar"
+          Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[50%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+          Type="submit"
+        />
       </form>
     </div>
   );

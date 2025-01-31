@@ -46,10 +46,14 @@ export function PositionForm({ ID, Name, Position }: User) {
           Name="Position"
         />
         <div className=" w-full flex justify-between">
-          <Button Text="Alterar" Width="40%" Type="submit" />
+          <Button
+            Text="Alterar"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-3 xl:p-4 w-[40%] text-[85%] lg:text-[90%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+            Type="submit"
+          />
           <Button
             Text="Deletar"
-            Width="40%"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[40%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
             Type="button"
             click={async (): Promise<void> => {
               await fetch(
@@ -60,7 +64,9 @@ export function PositionForm({ ID, Name, Position }: User) {
               )
                 .then(async (data) => {
                   if (!data.ok) {
-                    router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
+                    router.replace(
+                      `${process.env.NEXT_PUBLIC_URL}/login/signIn`
+                    );
                   }
                   router.replace(process.env.NEXT_PUBLIC_URL);
                 })
