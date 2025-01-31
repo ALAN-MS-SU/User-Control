@@ -31,7 +31,7 @@ export function PositionForm({ ID, Name, Position }: User) {
               router.replace("/login/signIn");
             });
         }}
-        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 w-[450px] rounded-2xl"
+        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
       >
         <h1 className=" text-[120%] text-center">
           {`Usuário: ${Name}`}

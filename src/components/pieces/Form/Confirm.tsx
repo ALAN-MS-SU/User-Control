@@ -16,7 +16,7 @@ export function Confirm({
           const body = new FormData(e.currentTarget as HTMLFormElement);
           await Validation({ Password: body.get("password") as string });
         }}
-        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 w-[450px] rounded-2xl"
+        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px] "
       >
         <h1 className=" text-center">Digite sua senha atual</h1>
         <Form_Item Input="Password" Label="Senha" Name="password" />

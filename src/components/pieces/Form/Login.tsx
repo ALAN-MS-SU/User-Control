@@ -26,7 +26,7 @@ export function Login() {
             router.replace(process.env.NEXT_PUBLIC_URL);
           });
         }}
-        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 w-[450px] rounded-2xl"
+        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
       >
         <h1 className=" text-center">Entrar</h1>
         <Form_Item Input="Email" Label="Email" Name="email" />

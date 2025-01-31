@@ -37,7 +37,7 @@ export function ConfigForm({
               router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
             });
         }}
-        className="flex flex-col shadow-2xl items-center justify-around p-10 gap-10 w-[450px] rounded-2xl"
+        className="flex flex-col shadow-2xl items-center justify-around p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
       >
         <h1 className=" text-center">Alterar sua conta</h1>
         <Form_Item DefaultValue={Name} Label="Nome" Input="Text" Name="name" />
