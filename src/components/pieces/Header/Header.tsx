@@ -10,7 +10,7 @@ export function Header({ user }: { user: User }) {
 
   return (
     <header className=" sticky top-0 bg-[var(--primary-light)] opacity-100 shadow-lg p-10 flex flex-row justify-center gap-[75%] items-center w-[100%]">
-      <h1 className=" text-[150%]">{`Bem vindo  ${user.Name}`}</h1>
+      <h1 className=" text-nowrap relative left-[30px] text-[120%] sm:static md:text-[130%] 2xl:text-[150%] xl:text-[140%]">{`Bem vindo  ${user.Name}`}</h1>
       <UserIcon>
         <p className="text-[100%]">{user.Name}</p>
         <Button
