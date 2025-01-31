@@ -1,7 +1,7 @@
 "use server";
 import { authOptions } from "../../app/api/auth/[...nextauth]/route";
 import { User } from "../../model";
-import { Header, ListUser, ListAdmin } from "../pieces";
+import { Header, ListUser, ListAdmin, Footer } from "../pieces";
 import { getServerSession } from "next-auth";
 export async function Home() {
   const session = await getServerSession(authOptions);
@@ -14,6 +14,7 @@ export async function Home() {
       ) : (
         <ListUser user={session.user as User} />
       )}
+      <Footer />
     </>
   );
 }

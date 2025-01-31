@@ -18,8 +18,8 @@ export async function ListAdmin({ user }: { user: User }) {
         return;
       })) || [];
   return (
-    <div className="flex justify-center ">
-      <div className="flex flex-col shadow-2xl mt-[50px] p-10 gap-10 rounded-2xl w-[80%]">
+    <div className="flex justify-center min-h-[calc(100dvh-428px)]">
+      <div className="flex flex-col shadow-2xl mt-[50px] mb-[50px] p-10 gap-10 rounded-2xl w-[80%]">
         <h1 className=" text-center text-[200%] font-semibold">
           Lista de usuários cadastrados
         </h1>

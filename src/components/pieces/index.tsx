@@ -10,3 +10,4 @@ export * from "./List/ListLine";
 export * from "./Form/PositionForm"
 export * from "./Form/ConfigForm"
 export * from "./Form/Confirm"
+export * from "./Footer/Footer"
