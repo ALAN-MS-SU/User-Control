@@ -29,7 +29,7 @@ export function ListLine({
         <td className=" p-[20px] border-[2px] border-solid border-[var(--secound)]">
           <Button
             Text="Editar"
-            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]md:text-[80%] sm:w-[90%]  p-4 w-[100%] text-[95%] xl:w-[45%] lg:text-[90%] lg:w-[60%] md:w-[80%]"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)] md:text-[80%] sm:w-[90%]  p-4 w-[100%] text-[95%] xl:w-[45%] lg:text-[90%] lg:w-[60%] md:w-[80%]"
             Type="button"
             click={async (): Promise<void> => {
               router.push(`/EditPosition/${ID}`);

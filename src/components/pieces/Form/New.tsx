@@ -43,7 +43,11 @@ export function New() {
         <Form_Item Label="Nome" Input="Text" Name="name" />
         <Form_Item Label="Email" Input="Email" Name="email" />
         <Form_Item Label="Senha" Input="Password" Name="password" />
-        <Button Text="Criar" Width="50%" Type="submit" />
+        <Button
+          Text="Criar"
+          Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[50%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+          Type="submit"
+        />
         <Link className="text-blue-700 underline" href={"signIn"}>
           Já tenho uma conta
         </Link>

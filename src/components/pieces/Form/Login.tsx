@@ -31,7 +31,7 @@ export function Login() {
         <h1 className=" text-center">Entrar</h1>
         <Form_Item Input="Email" Label="Email" Name="email" />
         <Form_Item Input="Password" Label="Senha" Name="password" />
-        <Button Text="Entrar" Width="50%" Type="submit" />
+        <Button Text="Entrar" Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[50%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]" Type="submit" />
         <div>
           <Link className=" text-blue-700 underline" href={"new"}>
             Nova Conta
