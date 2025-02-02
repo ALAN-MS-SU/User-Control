@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
 import { Button } from "./Button";
-import { Form_Item } from "./Form_item";
+import { Form_Item, input_error } from "./Form_item";
 import { SyntheticEvent } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 export function New() {
-  const router:AppRouterInstance = useRouter();
+  const router: AppRouterInstance = useRouter();
   return (
     <div className=" h-[100dvh] flex flex-col items-center justify-center">
       <form
@@ -20,6 +20,7 @@ export function New() {
           })
             .then(async (data) => {
               if (!data.ok) {
+                input_error();
                 return console.log(data);
               }
               await signIn("credentials", {
@@ -28,6 +29,7 @@ export function New() {
                 password: body.get("password") as string,
               }).then((data) => {
                 if (!data.ok) {
+                  input_error();
                   return console.log(data);
                 }
                 router.replace(process.env.NEXT_PUBLIC_URL);

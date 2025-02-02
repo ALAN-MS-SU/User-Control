@@ -24,7 +24,7 @@ export function Form_Item({
       {Input && (
         <input
           required
-          defaultValue={DefaultValue||""}
+          defaultValue={DefaultValue || ""}
           className=" relative right-[45px] border-[var(--secound)] border-b bg-transparent"
           type={Input}
           name={Name}
@@ -33,7 +33,7 @@ export function Form_Item({
       )}
       {Select && (
         <select
-          defaultValue={DefaultValue||Items[0]}
+          defaultValue={DefaultValue || Items[0]}
           required
           className=" relative w-[175px] right-[45px] border-[var(--secound)] border-b bg-transparent"
           name={Name}
@@ -50,4 +50,12 @@ export function Form_Item({
       )}
     </div>
   );
+}
+export function input_error() {
+  const inputs: HTMLInputElement[] = Array.from(
+    document.querySelectorAll("input")
+  );
+  inputs.map((input) => {
+    input.style.borderColor = "red";
+  });
 }

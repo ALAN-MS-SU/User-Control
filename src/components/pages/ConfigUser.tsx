@@ -1,5 +1,5 @@
 "use client";
-import { ConfigForm, Confirm } from "../pieces";
+import { ConfigForm, Confirm, input_error } from "../pieces";
 import { User } from "../../model";
 import { useState } from "react";
 export function ConfigUser({
@@ -8,7 +8,9 @@ export function ConfigUser({
   ID,
 }: Pick<User, "Email" | "Name" | "ID">) {
   const [Password, SetPassword] = useState<string>();
-  async function Validation({ Password }: Pick<User, "Password">): Promise<void> {
+  async function Validation({
+    Password,
+  }: Pick<User, "Password">): Promise<void> {
     const body = new FormData();
     body.append("email", Email);
     body.append("password", Password);
@@ -17,8 +19,11 @@ export function ConfigUser({
       body,
     })
       .then(async (data) => {
-        if (!data.ok) throw new Error("Fetch err on ConfigUser");
-        SetPassword(Password);
+        if (!data.ok) {
+          input_error();
+          throw new Error("Fetch err on ConfigUser");
+        }
+        return SetPassword(Password);
       })
       .catch((err) => {
         console.log(err);

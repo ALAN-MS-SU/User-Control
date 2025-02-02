@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { User } from "../../model";
-import { PositionForm, Confirm } from "../pieces";
+import { PositionForm, Confirm, input_error } from "../pieces";
 export function EditUser({ ID, Name, Position, Email }: User) {
   const [Password, SetPassword] = useState<string>();
   async function Validation({
@@ -15,7 +15,10 @@ export function EditUser({ ID, Name, Position, Email }: User) {
       body,
     })
       .then((data) => {
-        if (!data.ok) throw new Error("fetch err on EditUser");
+        if (!data.ok) {
+          input_error();
+          throw new Error("fetch err on EditUser");
+        }
         SetPassword(Password);
       })
       .catch((err) => {

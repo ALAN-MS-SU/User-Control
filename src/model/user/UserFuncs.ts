@@ -44,7 +44,7 @@ export abstract class UserFuncs {
       return;
     } catch (err) {
       console.log(err);
-      return;
+      throw new Error("The user already exists");
     }
   }
   static async ListUsers({ ID }: Omit<User, "Name">): Promise<User[]> {
