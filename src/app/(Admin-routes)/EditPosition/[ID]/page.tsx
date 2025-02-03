@@ -1,8 +1,7 @@
 "use server";
 import { EditUser } from "../../../..//components/pages";
-import { User } from "../../../../model";
+import { authOptions, User } from "../../../../model";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../api/auth/[...nextauth]/route";
 export default async function EditPosition({ params }) {
   const { ID } = await params;
   const session = await getServerSession(authOptions)
