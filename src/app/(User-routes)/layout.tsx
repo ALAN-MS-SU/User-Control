@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { NextAuthSessionProviderProps } from "../../model";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../auth";
 import { redirect } from "next/navigation";
 export default async function UserLayout({
   children,

@@ -15,6 +15,7 @@ export function Login() {
           const body: FormData = new FormData(
             e.currentTarget as HTMLFormElement
           );
+         
           await signIn("credentials", {
             redirect: false,
             email: body.get("email") as string,

@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../auth";
 import { ConfigUser } from "../../../components/pages/";
 import { User } from "../../../model";
 export default async function Config() {

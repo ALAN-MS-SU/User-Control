@@ -1,5 +1,5 @@
 "use server";
-import { authOptions } from "../../app/api/auth/[...nextauth]/route";
+import { authOptions } from "../../app/auth";
 import { User } from "../../model";
 import { Header, ListUser, ListAdmin, Footer } from "../pieces";
 import { getServerSession } from "next-auth";
