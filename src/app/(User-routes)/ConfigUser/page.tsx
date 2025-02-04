@@ -1,9 +1,5 @@
 import { getServerSession } from "next-auth";
-<<<<<<< HEAD
 import { authOptions } from "../../auth";
-=======
-import { authOptions } from "../../../model";
->>>>>>> refs/remotes/origin/main
 import { ConfigUser } from "../../../components/pages/";
 import { User } from "../../../model";
 export default async function Config() {
