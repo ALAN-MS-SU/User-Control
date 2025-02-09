@@ -1,0 +1,25 @@
+services:
+  DB:
+    image: postgres:17
+    container_name: user-postgres
+    restart: always
+    ports:
+      - 5423:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - user-db:/var/lib/postgresql/data 
+ 
+  nextapp:
+    container_name: user-control
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - DB
+    env_file:
+      - ./.env
+ 
+volumes:
+  user-db:
