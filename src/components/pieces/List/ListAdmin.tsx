@@ -20,7 +20,7 @@ export async function ListAdmin({ user }: { user: User }) {
   return (
     <div className="flex justify-center min-h-[calc(100dvh-428px)]">
       <div className="flex flex-col shadow-2xl mt-[50px] mb-[50px] p-10 pr-0 pl-0 gap-10 rounded-2xl w-full sm:w-[90%] md:pr-10 md:pl-10 md:w-[80%]">
-        <h1 className=" text-center font-semibold text-nowrap text-[150%] sm:text-[160%] md:text-[180%] lg:text-[200%]">
+        <h1 className=" text-center font-semibold text-nowrap text-[135%] sm:text-[160%] md:text-[180%] lg:text-[200%]">
           Lista de usuários cadastrados
         </h1>
         <table className=" table-fixed w-full  border-[2px] border-solid border-[var(--secound)] text-center text-[90%] sm:text-[100%] md:text-[110%] lg:text-[120%]">

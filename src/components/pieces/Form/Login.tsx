@@ -15,7 +15,7 @@ export function Login() {
           const body: FormData = new FormData(
             e.currentTarget as HTMLFormElement
           );
-         
+
           await signIn("credentials", {
             redirect: false,
             email: body.get("email") as string,
@@ -32,14 +32,14 @@ export function Login() {
               console.log(err);
             });
         }}
-        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
+        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[300px] pr-4 pl-4 sm:pr-10 sm:pl-10 sm:w-[450px]"
       >
         <h1 className=" text-center">Entrar</h1>
         <Form_Item Input="Email" Label="Email" Name="email" />
         <Form_Item Input="Password" Label="Senha" Name="password" />
         <Button
           Text="Entrar"
-          Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[50%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+          Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4  text-[100%] font-semibold rounded-xl w-[60%] sm:w-[50%] hover:bg-[var(--secound)] hover:text-[var(--primary)]"
           Type="submit"
         />
         <div>

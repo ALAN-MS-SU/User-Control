@@ -32,7 +32,7 @@ export function PositionForm({ ID, Name, Position }: User) {
               router.replace("/login/signIn");
             });
         }}
-        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
+        className=" flex flex-col items-center justify-around shadow-2xl p-10 gap-10 rounded-2xl w-[300px] sm:w-[450px]"
       >
         <h1 className=" text-[120%] text-center">
           {`Usuário: ${Name}`}
@@ -49,12 +49,12 @@ export function PositionForm({ ID, Name, Position }: User) {
         <div className=" w-full flex justify-between">
           <Button
             Text="Alterar"
-            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[40%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4  text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] w-[45%] sm:w-[40%] hover:text-[var(--primary)]"
             Type="submit"
           />
           <Button
             Text="Deletar"
-            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[40%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] w-[45%] sm:w-[40%] hover:text-[var(--primary)]"
             Type="button"
             click={async (): Promise<void> => {
               await fetch(

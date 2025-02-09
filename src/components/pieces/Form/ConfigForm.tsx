@@ -37,7 +37,7 @@ export function ConfigForm({
               router.replace(`${process.env.NEXT_PUBLIC_URL}/login/signIn`);
             });
         }}
-        className="flex flex-col shadow-2xl items-center justify-around p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
+        className="flex flex-col shadow-2xl p-10 items-center justify-around  gap-10 rounded-2xl w-[300px] pr-4 pl-4 sm:pr-10 sm:pl-10 sm:w-[450px]"
       >
         <h1 className=" text-center">Alterar sua conta</h1>
         <Form_Item DefaultValue={Name} Label="Nome" Input="Text" Name="name" />
@@ -56,12 +56,12 @@ export function ConfigForm({
         <div className=" w-full flex justify-between">
           <Button
             Text="Alterar"
-            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[40%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] w-[45%] sm:w-[40%] hover:text-[var(--primary)]"
             Type="submit"
           />
           <Button
             Text="Deletar"
-            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[40%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+            Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] w-[45%] sm:w-[40%] hover:text-[var(--primary)]"
             Type="button"
             click={async () => {
               await fetch(

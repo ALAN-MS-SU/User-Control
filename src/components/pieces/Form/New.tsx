@@ -39,7 +39,7 @@ export function New() {
               return console.log(err);
             });
         }}
-        className="flex flex-col shadow-2xl items-center justify-around p-10 gap-10 rounded-2xl w-[400px] sm:w-[450px]"
+        className="flex flex-col shadow-2xl items-center justify-around p-10 gap-10 rounded-2xl w-[300px] pr-4 pl-4 sm:pr-10 sm:pl-10 sm:w-[450px]"
       >
         <h1 className=" text-center">Nova conta</h1>
         <Form_Item Label="Nome" Input="Text" Name="name" />
@@ -47,7 +47,7 @@ export function New() {
         <Form_Item Label="Senha" Input="Password" Name="password" />
         <Button
           Text="Criar"
-          Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 w-[50%] text-[100%] font-semibold rounded-xl hover:bg-[var(--secound)] hover:text-[var(--primary)]"
+          Style=" bg-[var(--primary)] border-solid border-2 text-[var(--secound)] transition-colors ease-in border-[--secound] p-4 text-[100%] font-semibold rounded-xl w-[60%] sm:w-[50%] hover:bg-[var(--secound)] hover:text-[var(--primary)]"
           Type="submit"
         />
         <Link className="text-blue-700 underline" href={"signIn"}>
