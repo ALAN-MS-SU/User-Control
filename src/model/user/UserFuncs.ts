@@ -1,7 +1,7 @@
 import { isBlanck, User, UserRequest } from "..";
 import { dbPool } from "../../db/config";
 import bcryptjs from "bcryptjs";
-export abstract class UserFuncs {
+export abstract class UserAuth {
   static async FindUser({
     Email,
     Password,
@@ -47,18 +47,21 @@ export abstract class UserFuncs {
       throw new Error("The user already exists");
     }
   }
-  static async ListUsers({ ID }: Omit<User, "Name">): Promise<User[]> {
-    const connection = await dbPool.connect();
-    const data = await connection.query("select * from Read_Users($1)", [
-      `ID != ${ID}`,
-    ]);
-    connection.release();
-    const Users: User[] = [];
-    data.rows.map((row) => {
-      Users.push(new User(row.id, row.name, row.position, row.email));
-    });
-    return Users;
-  }
+}
+
+export async function ListUsers({ ID }: Omit<User, "Name">): Promise<User[]> {
+  const connection = await dbPool.connect();
+  const data = await connection.query("select * from Read_Users($1)", [
+    `ID != ${ID}`,
+  ]);
+  connection.release();
+  const Users: User[] = [];
+  data.rows.map((row) => {
+    Users.push(new User(row.id, row.name, row.position, row.email));
+  });
+  return Users;
+}
+export abstract class UserEdit {
   static async EditPosition({
     ID,
     Request,

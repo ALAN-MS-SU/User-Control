@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { UserFuncs } from "../model";
+import { UserAuth } from "../model";
 export const authOptions = {
   providers: [
     Credentials({
@@ -9,9 +9,8 @@ export const authOptions = {
         email: { label: "Email", type: "email", placeholder: "Email" },
         password: { label: "Senha", type: "password", placeholder: "Sehna" },
       },
-
       authorize: async (credentials) => {
-        const user = await UserFuncs.FindUser({
+        const user = await UserAuth.FindUser({
           Email: credentials.email,
           Password: credentials.password,
         });
@@ -27,21 +26,15 @@ export const authOptions = {
       },
     }),
   ],
-
-  pages: {
-    // signIn: process.env.NEXTAUTH_URL,
-    // signOut: process.env.NEXTAUTH_URL,
-  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.user = user;
-        token.accessTokenExpires = Date.now() + 3600000;
+        token.exp = Date.now() + 3600000;
       }
-      if (Date.now() > token.accessTokenExpires) {
+      if (Date.now() > token.exp) {
         return {
           ...token,
-          accessTokenExpires: 0,
         };
       }
       return token;
@@ -49,8 +42,8 @@ export const authOptions = {
     async session({ session, token }) {
       if (token) {
         session.user = token.user;
-        if (token.accessToken) {
-          session.accessToken = token.accessToken;
+        if (token.exp) {
+          session.exp = token.exp;
         }
       }
       return session;

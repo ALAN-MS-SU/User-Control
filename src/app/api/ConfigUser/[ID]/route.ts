@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { UserFuncs } from "../../../../model";
+import { UserEdit,UserAuth } from "../../../../model";
 
 export async function POST(req: NextRequest) {
   const body = await req.formData();
   if (
-    (await UserFuncs.FindUser({
+    (await UserAuth.FindUser({
       Email: body.get("email") as string,
       Password: body.get("password") as string,
     })) == null
@@ -17,7 +17,7 @@ export async function PUT(req: NextRequest) {
   const body = await req.formData();
   const ID: number = Number.parseInt(req.nextUrl.pathname.split("/")[3]);
   try {
-    await UserFuncs.EditUser({
+    await UserEdit.EditUser({
       ID,
       Name: body.get("name") as string,
       Email: body.get("email") as string,
@@ -31,6 +31,6 @@ export async function PUT(req: NextRequest) {
 }
 export async function DELETE(req: NextRequest) {
   const ID: number = Number.parseInt(req.nextUrl.pathname.split("/")[3]);
-  await UserFuncs.DeleteUSer({ ID });
+  await UserEdit.DeleteUSer({ ID });
   return new NextResponse();
 }
