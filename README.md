@@ -1,5 +1,5 @@
 <h1>This project was made to control entry and exit of users</h1>
-<img src="https://github.com/user-attachments/assets/21a229d4-f091-411b-80eb-f097fb515580">
+<img src="https://github.com/user-attachments/assets/198006db-b0e3-4f1f-b811-7b8562b590f5">
 <h3>It was made with Next.js 15v (App router)</h3>
 <h4>Libs used: </h4>
 <ol>
@@ -7,6 +7,8 @@
   <li><p><strong><a href="https://www.npmjs.com/package/bcryptjs">Bcryptjs</a></strong> to generate password hashes and save them in database.</p></li>
   <li><p><strong><a href="https://node-postgres.com">PG</a> (PostgreSQL)</strong> to connect the API with the database.</p></li>
 </ol>
+
+
 <h2>About</h2>
 <p>The goal of the project was to train back-end with js, learn to work with the PostgreSQL databases and learn about web tokens and your libs.</p>
 <h2>Clone with git</h2>
