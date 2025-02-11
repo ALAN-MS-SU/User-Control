@@ -1,5 +1,5 @@
-<h1>This project was made to control entry and exit of users</h1>
-<img src="https://github.com/user-attachments/assets/198006db-b0e3-4f1f-b811-7b8562b590f5">
+<h1 align="center">This project was made to control entry and exit of users</h1>
+<p align="center"><img src="https://github.com/user-attachments/assets/198006db-b0e3-4f1f-b811-7b8562b590f5"></p>
 <h3>It was made with Next.js 15v (App router)</h3>
 <h4>Libs used: </h4>
 <ol>
