@@ -25,10 +25,10 @@ NEXTAUTH_URL = "http://localhost:3000/login/sigIn"
 NEXTAUTH_SECRET = 
 hash_number= "8"</code></pre>
 <h2>How start as dev</h2>
-<h3>It's Necessary to have <a href="https://nodejs.org/pt">Node.js</a> installed on your computer</h3>
+<h3>It's necessary to have <a href="https://nodejs.org/pt">Node.js</a> installed on your computer</h3>
 <pre><code>npm i</code></pre>
 <pre><code>npm run dev</code></pre>
 <h2>How start with Docker</h2>
-<h3>It's Necessary to have <a href="https://www.docker.com/">Docker</a> installed on your computer</h3>
+<h3>It's necessary to have <a href="https://www.docker.com/">Docker</a> installed on your computer</h3>
 <pre><code>docker compose up -d</code></pre>
 <h3>To access at <a href="http://localhost:3000">http://localhost:3000</a> (dev and docker)</h3>
