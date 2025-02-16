@@ -74,7 +74,11 @@ export abstract class UserEdit {
           `ID = ${ID}`,
         ]);
         connection.release();
-        const { id, name, position } = data.rows[0];
+        const { id, name, position } = data.rows[0] || {
+          id: undefined,
+          name: undefined,
+          position: undefined,
+        };
         return new User(id, name, position);
       } catch (err) {
         console.log(err);

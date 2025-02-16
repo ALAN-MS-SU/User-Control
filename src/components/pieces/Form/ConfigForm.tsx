@@ -40,18 +40,18 @@ export function ConfigForm({
         className="flex flex-col shadow-2xl p-10 items-center justify-around  gap-10 rounded-2xl w-[300px] pr-4 pl-4 sm:pr-10 sm:pl-10 sm:w-[450px]"
       >
         <h1 className=" text-center">Alterar sua conta</h1>
-        <Form_Item DefaultValue={Name} Label="Nome" Input="Text" Name="name" />
+        <Form_Item DefaultValue={Name} Label="Nome" Input="Text" Name="Name" />
         <Form_Item
           DefaultValue={Email}
           Label="Email"
           Input="Email"
-          Name="email"
+          Name="Email"
         />
         <Form_Item
           Label="Senha"
           DefaultValue={Password}
           Input="Password"
-          Name="password"
+          Name="Password"
         />
         <div className=" w-full flex justify-between">
           <Button

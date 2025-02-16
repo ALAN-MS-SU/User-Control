@@ -8,6 +8,9 @@ export async function GET(req: NextRequest) {
 export async function PUT(req: NextRequest) {
   const ID: number = Number.parseInt(req.nextUrl.pathname.split("/")[3]);
   const body = await req.formData();
-  await UserEdit.EditPosition({ID,Position:body.get("Position") as Position});
+  await UserEdit.EditPosition({
+    ID,
+    Position: body.get("Position") as Position,
+  });
   return new NextResponse();
 }

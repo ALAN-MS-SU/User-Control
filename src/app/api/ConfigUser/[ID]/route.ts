@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { UserEdit,UserAuth } from "../../../../model";
+import { UserEdit, UserAuth } from "../../../../model";
 
 export async function POST(req: NextRequest) {
   const body = await req.formData();
@@ -19,9 +19,9 @@ export async function PUT(req: NextRequest) {
   try {
     await UserEdit.EditUser({
       ID,
-      Name: body.get("name") as string,
-      Email: body.get("email") as string,
-      Password: body.get("password") as string,
+      Name: body.get("Name") as string,
+      Email: body.get("Email") as string,
+      Password: body.get("Password") as string,
     });
     return new NextResponse();
   } catch (err) {
